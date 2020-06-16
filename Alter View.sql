@@ -8,9 +8,9 @@ DECLARE @SQL_BULK VARCHAR(MAX);
 
 INSERT INTO @Query1
 SELECT
-top 13 [TABLE_NAME]
+top 13 [TABLE_NAME] -- Change this according to how many tables you want to include in this.
 FROM INFORMATION_SCHEMA.TABLES f
-where [TABLE_NAME] like 'client_output_AB%'
+where [TABLE_NAME] like 'client_output_AB%' -- Change this to help the query search for a specific table. 
 ORDER BY [TABLE_NAME] DESC;
 
 WHILE EXISTS (SELECT * FROM @Query1)
@@ -21,13 +21,13 @@ SELECT @Query2 = MIN(Files) From @Query1;
 if((select count(*) from @Query1) > 1)
 BEGIN
 set @SQL_BULK = concat(@SQL_BULK,(select
-'SELECT * FROM ' + @Query2 + ' where [Time Period] like ''13 Weeks%'' UNION ALL 
+'SELECT * FROM ' + @Query2 + ' where [Time Period] like ''13 Weeks%'' UNION ALL  -- This is where you can change your where clause. 
  '))
 END
 ELSE
 BEGIN
 set @SQL_BULK = concat(@SQL_BULK,(select
-'SELECT * FROM ' + @Query2 + ' where [Time Period] like ''13 Weeks%'''))
+'SELECT * FROM ' + @Query2 + ' where [Time Period] like ''13 Weeks%''')) -- This is where you can change your where clause.
 END
 
 Delete From @Query1 Where Files = @Query2;
