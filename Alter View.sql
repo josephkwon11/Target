@@ -21,8 +21,7 @@ SELECT @Query2 = MIN(Files) From @Query1;
 if((select count(*) from @Query1) > 1)
 BEGIN
 set @SQL_BULK = concat(@SQL_BULK,(select
-'SELECT * FROM ' + @Query2 + ' where [Time Period] like ''13 Weeks%'' UNION ALL  -- This is where you can change your where clause. 
- '))
+'SELECT * FROM ' + @Query2 + ' where [Time Period] like ''13 Weeks%'' UNION ALL'))  -- This is where you can change your where clause. 
 END
 ELSE
 BEGIN
