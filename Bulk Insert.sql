@@ -117,8 +117,8 @@ UPDATE STATISTICS [Target].[dbo].[client_output_v3_{DATENOWADD(Days|-10|yyyyMMdd
 /*****   Bulk Insert  *****/
 
 DECLARE @bulk_cmd varchar(1000)
-SET @bulk_cmd = 'BULK INSERT [Target].[dbo].[client_output_v3_{DATENOWADD(Days|-10|yyyyMMdd)}] -- Keep your title consistent
-FROM ''\\daywinrcad001\C\Target\NIS.csv'' --This is the path for your .csv that you will be bulk inserting. 
+SET @bulk_cmd = 'BULK INSERT [Target].[dbo].[client_output_v3_{DATENOWADD(Days|-10|yyyyMMdd)}]
+FROM ''\\daywinrcad001\C\Target\NIS.csv''
 WITH (DATAFILETYPE = ''char'',
 	  CODEPAGE = ''ACP'',
       FIRSTROW = 2,
