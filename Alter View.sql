@@ -8,7 +8,7 @@ DECLARE @SQL_BULK VARCHAR(MAX);
 
 INSERT INTO @Query1
 SELECT
-top 13 [TABLE_NAME] -- Change this according to how many tables you want to include in this.
+top 13 [TABLE_NAME] -- Change this according to how many tables you want the query to find.
 FROM INFORMATION_SCHEMA.TABLES f
 where [TABLE_NAME] like 'client_output_AB%' -- Change this to help the query search for a specific table. 
 ORDER BY [TABLE_NAME] DESC;
